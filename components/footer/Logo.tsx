@@ -12,13 +12,14 @@ export default function Logo({ logo }: Props) {
     <>
       {logo?.image && (
         <div class="flex flex-col gap-3">
-          <div class="w-28 max-h-16">
+          <div class="w-[170px] mx-auto">
             <img
               loading="lazy"
               src={logo?.image}
               alt={logo?.description}
-              width={200}
-              height={200}
+              width={170}
+              
+             
             />
           </div>
           <div class="">

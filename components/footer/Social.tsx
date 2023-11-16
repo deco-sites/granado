@@ -23,8 +23,8 @@ export default function Social(
         <div class="flex flex-col gap-4">
           {content.title && <h3 class="text-lg">{content.title}</h3>}
           <ul
-            class={`flex gap-4 ${
-              vertical ? "lg:flex-col lg:items-start" : "flex-wrap items-center"
+            class={`flex justify-center gap-4 ${
+              vertical ? "lg:flex-col lg:items-start " : "flex-wrap items-center"
             }`}
           >
             {content.items.map((item) => {

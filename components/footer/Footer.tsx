@@ -185,7 +185,7 @@ function Footer({
       content={newsletter}
       layout={{
         tiled: layout?.variation == "Variation 4" ||
-          layout?.variation == "Variation 5",
+          layout?.variation == "Variation 5" || layout?.variation == "Variation 1" 
       }}
     />
   );
@@ -214,31 +214,57 @@ function Footer({
 
   return (
     <footer
-      class={`w-full flex flex-col pt-10 pb-2 md:pb-10 gap-10 ${
+      class={`w-full flex flex-col pb-2 md:pb-10 gap-10 ${
         ColorClasses(layout)
       }`}
     >
+    
       <div class="lg:container mx-6 lg:mx-auto">
+      <div class="bg-[#025a44] flex flex-row h-[35px] w-full">
+      <ul class="flex flex-row items-center pl-8">
+        <li class="uppercase text-white bg-[#004030] h-full items-center px-5 py-[10px] leading-none font-medium  text-[14px]">
+          <span class="tracking-widest ">Granado</span>
+        </li>
+        <li>
+          <a
+            class="px-5 py-[10px] text-white"
+            href="https://www.phebo.com.br/phebo/?utm_source=home&amp;utm_medium=phebo&amp;utm_campaign=header"
+            aria-label="phebo"
+          >
+            <span>PHEBO</span>
+          </a>
+        </li>
+      </ul>
+      </div>
         {(!layout?.variation || layout?.variation == "Variation 1") && (
-          <div class="flex flex-col gap-10">
-            <div class="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:flex-nowrap gap-8 lg:gap-12">
-              {_logo}
-              {_sectionLinks}
+          <div class="flex flex-col gap-10 px-8 pt-[83px] pb-16">
+            <div class="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:flex-nowrap gap-4">
               {_newsletter}
+              {_sectionLinks}
+              <span class="block max-w-[450px] w-full">
+                <div class="mx-auto">
+                  {_social}
+                  {_logo}
+                </div>
+              </span>
             </div>
-            <Divider />
-            <div class="flex flex-col md:flex-row gap-10 md:gap-14 md:items-end">
+            
+            <div class="flex flex-col md:flex-row gap-10 md:gap-14 md:items-end justify-center">
               {_payments}
-              {_social}
-              <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 lg:items-end">
-                {_apps}
-                {_region}
-              </div>
             </div>
-            <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <div>
+              <p class="text-center text-sm mb-3">© Copyright Granado 2023 - Todos os direitos reservados Jesmond Comercio Varejista LTDA | CNPJ: 08.743.025/0010-88 | Estrada São Domingos, SN lote 14-A Parte – Boa Esperança – Seropédica - RJ | CEP: 23894-080 <br></br>
+                Horário de funcionamento: De segunda a sexta-feira, das 08:00 às 17:30h<br></br>
+                Telefone: 0800 940 6730 - 4000-1257<br></br>
+                Farmacêutico Responsável Técnico: Estael da Silva Pereira – CRF-RJ: 10416<br></br>
+                CMVS 125/2023 | 733 - AFE: 7.90899-1</p>
+               <p class="text-center text-[10px]">
+               As informações contidas neste site não devem ser usadas para automedicação e não substituem, em hipótese alguma, as orientações dadas pelo profissional da área médica. Somente o médico está apto a diagnosticar qualquer problema de saúde e prescrever o tratamento adequado. SE PERSISTIREM OS SINTOMAS, O MÉDICO DEVERÁ SER CONSULTADO. Os preços e promoções divulgados no site são válidos apenas para compras feitas pela internet. Maiores esclarecimentos, consultar o site: www.anvisa.gov.br.
+               </p>
+            </div>
+           
+            <div class="flex flex-col-reverse md:flex-row md:justify-center gap-10">
               <PoweredByDeco />
-              {_links}
             </div>
           </div>
         )}

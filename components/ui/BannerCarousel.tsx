@@ -172,9 +172,9 @@ function Buttons() {
         <Slider.PrevButton class="">
           <Icon
             class="text-[#333]"
-            size={24}
+            size={21}
             id="ChevronLeft"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </Slider.PrevButton>
       </div>

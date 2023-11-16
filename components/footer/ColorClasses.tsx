@@ -27,7 +27,7 @@ export interface Layout {
 export default function colorClasses(layout: Layout) {
   switch (layout?.backgroundColor) {
     case "Primary":
-      return "bg-primary text-primary-content";
+      return "bg-[#025a44] text-white";
     case "Secondary":
       return "bg-secondary text-secondary-content";
     case "Accent":

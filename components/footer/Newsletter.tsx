@@ -1,6 +1,8 @@
 import { useSignal } from "@preact/signals";
 import { invoke } from "$store/runtime.ts";
 import type { JSX } from "preact";
+import Icon from "$store/components/ui/Icon.tsx";
+
 
 export interface Form {
   placeholder?: string;
@@ -46,13 +48,13 @@ function Newsletter(
     <div
       class={`flex ${
         tiled
-          ? "flex-col gap-4 lg:flex-row lg:w-full lg:justify-between"
+          ? "flex-col gap-4 w-full max-w-[450px] pl-10"
           : "flex-col gap-4"
       }`}
     >
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 w-full max-w-[350px]">
         {content?.title && (
-          <h3 class={tiled ? "text-2xl lg:text-3xl" : "text-lg"}>
+          <h3 class={tiled ? "text-2xl lg:text-3xl font-medium" : "text-lg"}>
             {content?.title}
           </h3>
         )}
@@ -63,18 +65,18 @@ function Newsletter(
           class="form-control"
           onSubmit={handleSubmit}
         >
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-row gap-3 relative items-center">
             <input
               name="email"
-              class="flex-auto md:flex-none input input-bordered md:w-80 text-base-content"
+              class="flex-auto h-[58px] md:flex-none input input-bordered w-full text-base-content join-item"
               placeholder={content?.form?.placeholder || "Digite seu email"}
             />
             <button
               type="submit"
-              class="btn disabled:loading"
+              class="disabled:loading join-item absolute right-3"
               disabled={loading}
             >
-              {content?.form?.buttonText || "Inscrever"}
+              <Icon size={20} id="ArrowRight" strokeWidth={3} class="text-[#004030]" />
             </button>
           </div>
         </form>
