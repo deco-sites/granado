@@ -19,13 +19,13 @@ function Header(props: Props) {
             {props.title &&
               (
                 <h1
-                  class={`text-2xl leading-8 lg:leading-10
+                  class={`text-2xl leading-8 lg:leading-10 mb-3
                   ${
                     props.colorReverse
                       ? "text-primary-content"
-                      : "text-base-content"
+                      : "text-[#025a44]"
                   }
-                  lg:text-3xl
+                lg:text-[48px] font-semibold
                 `}
                 >
                   {props.title}
@@ -35,9 +35,9 @@ function Header(props: Props) {
               (
                 <h2
                   class={`
-                  leading-6 lg:leading-8
+                  leading-6 lg:leading-8 font-medium
                   ${
-                    props.colorReverse ? "text-primary-content" : "text-neutral"
+                    props.colorReverse ? "text-primary-content" : "text-[#333]"
                   }
                   ${props.fontSize === "Normal" ? "lg:text-xl" : "lg:text-2xl"}
                 `}

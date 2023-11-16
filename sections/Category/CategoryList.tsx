@@ -4,6 +4,8 @@ import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
 import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
+import Icon from "$store/components/ui/Icon.tsx";
+
 
 export interface Category {
   tag?: string;
@@ -43,9 +45,20 @@ function CardText(
         alignment === "center" ? "text-center" : "text-left"
       }`}
     >
-      {tag && <div class="text-sm text-primary">{tag}</div>}
-      {label && <h3 class="text-lg text-base-content">{label}</h3>}
-      {description && <div class="text-sm text-neutral">{description}</div>}
+      {tag && <div class="text-sm text-white">{tag}</div>}
+      {label && <h3 class=" text-white text-[32px] absolute font-semibold bottom-10 left-[30px] group-hover:bottom-[148px] transition-all  duration-300 ease-in-out">{label}</h3>}
+      {description && 
+      <div class="absolute bottom-10 left-[32px]">
+        <div class="text-sm text-white absolute transition-all  bottom-20 duration-300 ease-in-out group-hover:opacity-100 opacity-0">
+          {description}
+        </div>
+        <span class="flex flex-row items-center text-white font-medium text-lg  bottom-12 group-hover:opacity-100 opacity-0">
+          Conheça
+          <Icon size={14} id="ArrowRight" fill="#FFFFF" strokeWidth={2} class="text-white ml-2" />
+
+        </span>
+      </div>
+        }
     </div>
   );
 }
@@ -80,7 +93,7 @@ function CategoryList(props: Props) {
   return (
     <div
       id={id}
-      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10"
+      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10 pl-20"
     >
       <Header
         title={header.title}
@@ -99,7 +112,7 @@ function CategoryList(props: Props) {
           >
             <a
               href={href}
-              class="flex flex-col gap-4 lg:w-[280px] w-40 lg:h-auto"
+              class="flex flex-col gap-4 lg:w-[280px] w-40 lg:h-auto relative group"
             >
               {layout.categoryCard?.textPosition === "top" &&
                 (
@@ -112,9 +125,9 @@ function CategoryList(props: Props) {
                 )}
               {image &&
                 (
-                  <figure>
+                  <figure >
                     <Image
-                      class="card w-full"
+                      class="card w-full scale-100 group-hover:scale-[0.98] transition-all duration-300 ease-in-out"
                       src={image}
                       alt={description || label || tag}
                       width={160}
@@ -123,22 +136,21 @@ function CategoryList(props: Props) {
                     />
                   </figure>
                 )}
+          
               {layout.categoryCard?.textPosition === "bottom" &&
-                (
                   <CardText
                     tag={tag}
                     label={label}
                     description={description}
                     alignment={layout?.categoryCard?.textAlignment}
                   />
-                )}
+                }
             </a>
             {buttonText &&
               <a href={href} class="btn">{buttonText}</a>}
           </Slider.Item>
         ))}
       </Slider>
-
       <SliderJS rootId={id} />
     </div>
   );
