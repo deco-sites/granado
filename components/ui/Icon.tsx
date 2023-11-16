@@ -47,7 +47,11 @@ export type AvailableIcons =
   | "ShoppingCartHover"
   | "UserHover"
   | "Menu"
-  | "ArrowRight";
+  | "ArrowRight"
+  | "Aniversario"
+  | "Frete"
+  | "Parcelamento"
+  | "Desconto"
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
