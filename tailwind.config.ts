@@ -4,5 +4,14 @@ export default {
   plugins: [daisyui],
   daisyui: { themes: [], logs: false },
   content: ["./**/*.tsx"],
-  theme: { container: { center: true } },
+  theme: {
+    container: {
+      center: true,
+    },
+    fontFamily: {
+      sans: ["'Mr_Eaves'", "Mr_Eaves", "sans-serif"],
+      serif: ["inherit", "serif"],
+      arial: ["Arial", "sans-serif"],
+    },
+  },
 };

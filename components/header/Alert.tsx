@@ -15,11 +15,25 @@ function Alert({ alerts = [], interval = 5 }: Props) {
   const id = useId();
 
   return (
-    <div id={id}>
-      <Slider class="carousel carousel-center w-screen bg-secondary gap-6">
+    <div id={id} class="bg-[#025a44] flex flex-row h-[35px] w-full">
+      <ul class="flex flex-row items-center pl-8">
+        <li class="uppercase text-white bg-[#004030] h-full items-center px-5 py-[10px] leading-none font-medium  text-[14px]">
+          <span class="tracking-widest ">Granado</span>
+        </li>
+        <li>
+          <a
+            class="px-5 py-[10px] text-white"
+            href="https://www.phebo.com.br/phebo/?utm_source=home&amp;utm_medium=phebo&amp;utm_campaign=header"
+            aria-label="phebo"
+          >
+            <span>PHEBO</span>
+          </a>
+        </li>
+      </ul>
+      <Slider class="carousel carousel-center w-full gap-6">
         {alerts.map((alert, index) => (
           <Slider.Item index={index} class="carousel-item">
-            <span class="text-sm text-secondary-content flex justify-center items-center w-screen h-[38px]">
+            <span class="text-sm text-white flex justify-center items-center w-screen h-full">
               {alert}
             </span>
           </Slider.Item>
