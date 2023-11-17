@@ -1,12 +1,12 @@
-import { Picture, Source } from "apps/website/components/Picture.tsx";
+import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 
 /**
  * @titleBy alt
  */
 export interface Banner {
-  srcMobile: ImageWidget;
-  srcDesktop?: ImageWidget;
+  
+  picture: ImageWidget;
   /**
    * @description Image alt text
    */
@@ -52,7 +52,7 @@ export default function BannnerHomeGrid(props: Props) {
   } = { ...DEFAULT_PROPS, ...props };
 
   return (
-    <section class="container w-full px-4 md:px-0 mx-auto">
+    <section class="container w-full px-4 md:px-0 mx-auto h-full py-10">
       {title &&
         (
           <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
@@ -63,69 +63,39 @@ export default function BannnerHomeGrid(props: Props) {
             <div class="bg-[#e5e5ea] h-[1px] w-full ml-4"></div>
           </div>
         )}
-      <div
-        class={`flex flex-row`}
-      >
-        {banners.map(({ href, srcMobile, srcDesktop, alt }, index) => (
-          <div>
-            {index == 0 ?  
-            <a
-            href={href}
-            class="w-[60%]"
-          >
-            <Picture>
-              <Source
-                media="(max-width: 767px)"
-                src={srcMobile}
-                width={100}
-                height={100}
-              />
-              <Source
-                media="(min-width: 768px)"
-                src={srcDesktop ? srcDesktop : srcMobile}
-                width={250}
-                height={250}
-              />
-              <img
-                class="w-full"
-                sizes="(max-width: 640px) 100vw, 30vw"
-                src={srcMobile}
-                alt={alt}
-                decoding="async"
+          <div class="flex flex-row h-full max-h-[620px]">
+            {/* BIG ONE */}
+            <a href={banners[0].href} class="w-[60%] mr-[15px] h-full max-h-[620px]">
+              <Image
+                sizes="(max-width: 767px) 100%, 50%"
+                src={banners[0].picture}
+                alt={banners[0].alt}
+                href={banners[0].href}
+                width={863}
+                height={607}
                 loading="lazy"
+                class="object-cover h-[620px] w-full rounded-md"
               />
-            </Picture>
-          </a> :  <a
-            href={href}
-            class="w-[40%]"
-          >
-            <Picture>
-              <Source
-                media="(max-width: 767px)"
-                src={srcMobile}
-                width={100}
-                height={100}
-              />
-              <Source
-                media="(min-width: 768px)"
-                src={srcDesktop ? srcDesktop : srcMobile}
-                width={250}
-                height={250}
-              />
-              <img
-                class="w-full"
-                sizes="(max-width: 640px) 100vw, 30vw"
-                src={srcMobile}
-                alt={alt}
-                decoding="async"
-                loading="lazy"
-              />
-            </Picture>
-          </a>}
+            </a>
+
+            {/* OTHERS */}
+            <div class="w-[40%] flex flex-col gap-[15px]"> 
+            {banners.slice(1, 3).map((item, index) => (
+              <a href={item.href} class={`w-[100%] h-full`}>
+                <Image
+                  sizes="(max-width: 767px) 100%, 50%"
+                  src={item.picture}
+                  alt={item.alt}
+                  href={item.href}
+                  width={580}
+                  height={272}
+                  loading="lazy"
+                  class="object-cover h-full w-full rounded-md"
+                />
+              </a>
+            ))}
+            </div>
           </div>
-         
-        ))}
-      </div>
     </section>
   );
 }
