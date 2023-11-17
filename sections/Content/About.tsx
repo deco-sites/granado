@@ -22,12 +22,12 @@ export default function About ({title, texts} : Props) {
 
     return (
         <div class="bg-[#025a44] text-white ">
-            <div class="py-[44px]">
+            <div class="py-[44px] max-w-[1536px] mx-auto">
              <h2 class="text-2xl lg:text-3xl font-medium  pl-8">
              {title}
              </h2>
              <div class="flex flex-col md:flex-row py-8">
-                {texts.map((text) => (
+                {texts?.map((text) => (
                     <div class="px-12">
                         <img src={text.img == "Fundacao" ? Images[0].src : text.img == "Lojas" ? Images[1].src : Images[2].src} width={83} height={83}/> 
                         <p class="mt-4">

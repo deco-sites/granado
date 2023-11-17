@@ -142,15 +142,19 @@ const setup = ({ rootId, scroll, interval, infinite }: Props) => {
           if (index === 0) {
             if (item.isIntersecting) {
               prev?.setAttribute("disabled", "");
+              prev?.setAttribute('style', 'display: none;');
             } else {
               prev?.removeAttribute("disabled");
+              prev?.removeAttribute("style");
             }
           }
           if (index === items.length - 1) {
             if (item.isIntersecting) {
               next?.setAttribute("disabled", "");
+              next?.setAttribute('style', 'display: none;');
             } else {
               next?.removeAttribute("disabled");
+              next?.removeAttribute("style");
             }
           }
         }

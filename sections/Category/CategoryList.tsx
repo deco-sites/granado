@@ -46,13 +46,13 @@ function CardText(
       }`}
     >
       {tag && <div class="text-sm text-white">{tag}</div>}
-      {label && <h3 class=" text-white text-[32px] absolute font-semibold bottom-10 left-[30px] group-hover:bottom-[148px] transition-all  duration-300 ease-in-out">{label}</h3>}
+      {label && <h3 class=" text-white text-[32px] absolute font-semibold bottom-16 left-[30px] group-hover:bottom-[148px] transition-all  duration-300 ease-in-out">{label}</h3>}
       {description && 
-      <div class="absolute bottom-10 left-[32px]">
-        <div class="text-sm text-white absolute transition-all  bottom-20 duration-300 ease-in-out group-hover:opacity-100 opacity-0">
+      <div class="absolute bottom-10 left-[32px] w-full max-w-[227px]">
+        <div class="text-sm max-w-[227px] w-full text-white absolute font-medium transition-all bottom-11 duration-300 ease-in-out group-hover:opacity-100 opacity-0">
           {description}
         </div>
-        <span class="flex flex-row items-center text-white font-medium text-lg  bottom-12 group-hover:opacity-100 opacity-0">
+        <span class="flex flex-row items-center text-white font-medium text-lg  bottom-14 group-hover:opacity-100 opacity-0">
           Conheça
           <Icon size={14} id="ArrowRight" fill="#FFFFF" strokeWidth={2} class="text-white ml-2" />
 
@@ -93,7 +93,7 @@ function CategoryList(props: Props) {
   return (
     <div
       id={id}
-      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10 pl-20"
+      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10 sm:pl-20 sm:px-0 px-2"
     >
       <Header
         title={header.title}
@@ -125,15 +125,16 @@ function CategoryList(props: Props) {
                 )}
               {image &&
                 (
-                  <figure >
+                  <figure class="relative">
                     <Image
-                      class="card w-full scale-100 group-hover:scale-[0.98] transition-all duration-300 ease-in-out"
+                      class="card w-full scale-100 group-hover:scale-[0.98] transition-all duration-300 ease-in-out rounded-[4px]"
                       src={image}
                       alt={description || label || tag}
                       width={160}
                       height={195}
                       loading="lazy"
                     />
+                     <div class="absolute inset-0 bg-black opacity-20 rounded-[4px]"></div>
                   </figure>
                 )}
           

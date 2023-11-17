@@ -8,6 +8,7 @@ import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import Image from "apps/website/components/Image.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
 
 export interface Layout {
   basics?: {
@@ -99,16 +100,24 @@ function ProductCard(
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block"
+      class="btn btn-block flex flex-row group/button hover:bg-[#025a44] bg-white border border-[#025a44]"
     >
-      {l?.basics?.ctaText || "Ver produto"}
+        <Icon
+          id="ShoppingCart"
+          size={26}
+          strokeWidth={2}
+          class="text-[#025a44] group-hover/button:text-white"
+        />
+        <span class="text-[#025a44] group-hover/button:text-white text-lg font-normal">
+          {l?.basics?.ctaText || "Adicionar"}
+        </span>
     </a>
   );
 
   return (
     <div
       id={id}
-      class={`card card-compact group w-full ${
+      class={`card card-compact group w-full border rounded-[1px] ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}
         ${
@@ -149,11 +158,21 @@ function ProductCard(
           }
           ${
             l?.onMouseOver?.showFavoriteIcon
-              ? "lg:hidden lg:group-hover:block"
+              ? "block"
               : "lg:hidden"
           }
         `}
         >
+          {platform === "shopify" &&  <div class="w-[35px] h-[35px] rounded-[3px] bg-white relative">
+            <Icon
+              id="Heart"
+              fill="none"
+              strokeWidth={1}
+              width={24}
+              height={24}
+              class="text-[#025a44] h-full hover:fill-[#025a44] cursor-pointer absolute top-[6px] left-1"
+            />
+          </div>}
           {platform === "vtex" && (
             <WishlistButton
               productGroupID={productGroupID}
@@ -214,7 +233,7 @@ function ProductCard(
         </figcaption>
       </figure>
       {/* Prices & Name */}
-      <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4">
+      <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4 px-8 pt-4 pb-6">
         {/* SKU Selector */}
         {(!l?.elementsPositions?.skuSelector ||
           l?.elementsPositions?.skuSelector === "Top") && (
@@ -237,13 +256,13 @@ function ProductCard(
             <div class="flex flex-col gap-0">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class="truncate text-base lg:text-lg text-base-content"
+                  class="truncate text-base lg:text-lg text-[#333]"
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
               {l?.hide?.productDescription ? "" : (
                 <div
-                  class="truncate text-sm lg:text-sm text-neutral"
+                  class="truncate text-sm lg:text-sm text-[#333]"
                   dangerouslySetInnerHTML={{ __html: description ?? "" }}
                 />
               )}
@@ -259,13 +278,13 @@ function ProductCard(
               } ${align === "center" ? "justify-center" : "justify-start"}`}
             >
               <div
-                class={`line-through text-base-300 text-xs ${
+                class={`line-through text-[#333] text-xs ${
                   l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
                 }`}
               >
                 {formatPrice(listPrice, offers?.priceCurrency)}
               </div>
-              <div class="text-accent text-base lg:text-xl">
+              <div class="text-[#333] text-base lg:text-xl">
                 {formatPrice(price, offers?.priceCurrency)}
               </div>
             </div>
