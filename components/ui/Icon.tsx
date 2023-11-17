@@ -55,6 +55,7 @@ export type AvailableIcons =
   | "Fundacao"
   | "Lojas"
   | "Ambiente"
+  | "Share"
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

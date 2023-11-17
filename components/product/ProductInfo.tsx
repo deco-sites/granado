@@ -16,6 +16,7 @@ import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductSelector from "./ProductVariantSelector.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -72,8 +73,8 @@ function ProductInfo({ page, layout }: Props) {
   });
 
   return (
-    <div class="flex flex-col" id={id}>
-      <Breadcrumb itemListElement={breadcrumb.itemListElement} />
+    <div class="flex flex-col px-20 py-[60px]" id={id}>
+      {/* <Breadcrumb itemListElement={breadcrumb.itemListElement} /> */}
       {/* Code and name */}
       <div class="mt-4 sm:mt-8">
         <div>
@@ -84,7 +85,7 @@ function ProductInfo({ page, layout }: Props) {
           )}
         </div>
         <h1>
-          <span class="font-medium text-xl capitalize">
+          <span class="font-semibold lg:text-[40px] md:text-[36px] sm:text-[32px] text-[#025a44] uppercase mb-[15px]">
             {layout?.name === "concat"
               ? `${isVariantOf?.name} ${name}`
               : layout?.name === "productGroup"
@@ -92,6 +93,10 @@ function ProductInfo({ page, layout }: Props) {
               : name}
           </span>
         </h1>
+        <span class="flex flex-row my-3">
+          <img src="https://img.freepik.com/vetores-premium/icone-de-classificacao-de-cinco-estrelas-estrelas-de-avaliacao-vetor-estrelas-planas-isoladas_118339-1270.jpg?w=2000" width={90} height={20} class="w-[90px] h-5" />
+          <span class="underline font-medium text-sm ml-5">72 Avaliações</span>
+        </span>
       </div>
       {/* Prices */}
       <div class="mt-4">
@@ -101,18 +106,21 @@ function ProductInfo({ page, layout }: Props) {
               {formatPrice(listPrice, offers?.priceCurrency)}
             </span>
           )}
-          <span class="font-medium text-xl text-secondary">
+          <span class="font-medium text-[32px] text-[#025a44]">
             {formatPrice(price, offers?.priceCurrency)}
           </span>
         </div>
+        <span class="text-base font-medium">
+          ou 10 x de R$ 32,00 sem juros
+        </span>
         <span class="text-sm text-base-300">
           {installments}
         </span>
       </div>
       {/* Sku Selector */}
-      <div class="mt-4 sm:mt-6">
+      {/* <div class="mt-4 sm:mt-6">
         <ProductSelector product={product} />
-      </div>
+      </div> */}
       {/* Add to Cart and Favorites button */}
       <div class="mt-4 sm:mt-10 flex flex-col gap-2">
         {availability === "https://schema.org/InStock"
@@ -153,10 +161,35 @@ function ProductInfo({ page, layout }: Props) {
                 />
               )}
               {platform === "shopify" && (
-                <AddToCartButtonShopify
+               <div class="flex flex-row">
+                  <div class="border border-gray-2 rounded-[2px] flex mr-4">
+                    <button
+                     type="button"
+                    variant="ghost"
+              
+                   class="w-[45px] h-[45px] flex items-center justify-center font-bold text-[16px] transition-all duration-1500 active:bg-green active:text-white"
+            >
+              -
+            </button>
+            <div class="h-[45px] w-[50px] flex items-center justify-center font-medium text-[14px] text-center">
+              1
+            </div>
+            <button
+              type="button"
+              variant="ghost"
+              
+              class="w-[45px] h-[45px] items-center!text-center flex items-center justify-center font-bold text-[16px] transition-all duration-1500 active:bg-green active:text-white"
+            >
+              +
+            </button>
+          </div> 
+          <span class="w-full max-w-[250px]">
+              <AddToCartButtonShopify
                   eventParams={{ items: [eventItem] }}
                   productID={productID}
                 />
+          </span>
+               </div>     
               )}
               {platform === "nuvemshop" && (
                 <AddToCartButtonNuvemshop
@@ -181,8 +214,36 @@ function ProductInfo({ page, layout }: Props) {
           />
         )}
       </div>
+      <div class="border-t-black border-t-[1px]">
+        <div class="flex sm:flex-row flex-col mt-5 text-sm">
+          <div class="flex flex-row items-center">
+            <Icon
+              id="Heart"
+              fill="none"
+              strokeWidth={2}
+              width={24}
+              height={24}
+              class="text-[#025a44] h-full hover:fill-[#025a44] cursor-pointer mr-2"
+            />
+            <span>Adicionar à lista de favoritos</span>
+           </div>
+           
+            <button class="flex flex-row ml-8 items-center">
+            <Icon
+              id="Share"
+              fill="none"
+              strokeWidth={1}
+              width={24}
+              height={24}
+              class="text-[#025a44] h-full hover:fill-[#025a44] cursor-pointer"
+            />
+            <span class="ml-1">Compartilhar</span>
+            </button>
+           
+        </div>
+      </div>
       {/* Description card */}
-      <div class="mt-4 sm:mt-6">
+      {/* <div class="mt-4 sm:mt-6">
         <span class="text-sm">
           {description && (
             <details>
@@ -194,7 +255,7 @@ function ProductInfo({ page, layout }: Props) {
             </details>
           )}
         </span>
-      </div>
+      </div> */}
       {/* Analytics Event */}
       <SendEventOnView
         id={id}
