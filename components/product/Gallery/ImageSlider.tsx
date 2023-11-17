@@ -5,6 +5,9 @@ import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
+import { useSignal } from "@preact/signals";
+import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
+import ProductDescription from  "../ProductDescription.tsx"
 
 export interface Props {
   /** @title Integration */
@@ -33,76 +36,53 @@ export default function GallerySlider(props: Props) {
     page: { product: { image: images = [] } },
     layout: { width, height },
   } = props;
+  const {
+    breadcrumbList
+  } = props.page;
   const aspectRatio = `${width} / ${height}`;
+ 
+  const breadcrumb = {
+    ...breadcrumbList,
+    itemListElement: breadcrumbList?.itemListElement.slice(0, -1),
+    numberOfItems: breadcrumbList.numberOfItems - 1,
+  };
 
+  const items = props.page.product.isVariantOf.image
+  breadcrumb.itemListElement.push({ name: props.page.product.name, item: "/" })
+  
+  const inFocus = useSignal(0);
   return (
-    <div id={id} class="grid grid-flow-row sm:grid-flow-col">
-      {/* Image Slider */}
-      <div class="relative order-1 sm:order-2">
-        <Slider class="carousel carousel-center gap-6 w-screen sm:w-[40vw]">
-          {images.map((img, index) => (
-            <Slider.Item
-              index={index}
-              class="carousel-item w-full"
-            >
-              <Image
-                class="w-full"
-                sizes="(max-width: 640px) 100vw, 40vw"
-                style={{ aspectRatio }}
-                src={img.url!}
-                alt={img.alternateName}
-                width={width}
-                height={height}
-                // Preload LCP image for better web vitals
-                preload={index === 0}
-                loading={index === 0 ? "eager" : "lazy"}
-              />
-            </Slider.Item>
-          ))}
-        </Slider>
-
-        <Slider.PrevButton
-          class="no-animation absolute left-2 top-1/2 btn btn-circle btn-outline"
-          disabled
-        >
-          <Icon size={24} id="ChevronLeft" strokeWidth={3} />
-        </Slider.PrevButton>
-
-        <Slider.NextButton
-          class="no-animation absolute right-2 top-1/2 btn btn-circle btn-outline"
-          disabled={images.length < 2}
-        >
-          <Icon size={24} id="ChevronRight" strokeWidth={3} />
-        </Slider.NextButton>
-
-        <div class="absolute top-2 right-2 bg-base-100 rounded-full">
-          <ProductImageZoom
-            images={images}
-            width={700}
-            height={Math.trunc(700 * height / width)}
-          />
-        </div>
-      </div>
-
-      {/* Dots */}
-      <ul class="carousel carousel-center gap-1 px-4 sm:px-0 sm:flex-col order-2 sm:order-1">
-        {images.map((img, index) => (
-          <li class="carousel-item min-w-[63px] sm:min-w-[100px]">
-            <Slider.Dot index={index}>
-              <Image
-                style={{ aspectRatio }}
-                class="group-disabled:border-base-300 border rounded "
-                width={63}
-                height={87.5}
-                src={img.url!}
-                alt={img.alternateName}
-              />
-            </Slider.Dot>
-          </li>
-        ))}
-      </ul>
-
-      <SliderJS rootId={id} />
+    <div id={id} class="w-full mt-[123px] lg:ml-8">
+       <Breadcrumb itemListElement={breadcrumb.itemListElement} />
+    <div
+      class=" grid grid-cols-2 overflow-auto snap-x snap-mandatory scroll-smooth scrollbar-none sm:gap-2 mt-6"
+      onScroll={(e) => {
+        const totalScroll = (e.srcElement as HTMLElement)?.scrollWidth;
+        const space = totalScroll / images1?.length;
+        const currentScroll = (e.srcElement as HTMLElement)?.scrollLeft;
+        inFocus.value = Math.round(currentScroll / space);
+      }}
+    >
+      {items?.map((img, index) => (
+        <Image
+          style={{ aspectRatio: "580 / 750" }}
+          class="snap-center min-w-[100vw] sm:min-w-full lg:min-w-0 cursor-pointer"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          src={img.url!}
+          alt={img.alternateName}
+          width={580}
+          height={750}
+          // Preload LCP image for better web vitals
+          preload={index < 1}
+          loading={index < 1 ? "eager" : "lazy"}
+         
+        />
+      ))}
     </div>
+    <div class="mt-[100px]">
+      <ProductDescription />
+    </div>
+
+  </div>
   );
 }

@@ -47,7 +47,7 @@ function ProductShelfWithText({
       />
       <div class="flex flex-col lg:flex-row">
         <div class="w-full lg:w-[320px] px-10 my-auto text-center h-full items-center">
-            <h2 class="lg:text-5xl md:text-[40px]  lg:w-[320px] w-full text-4xl font-semibold text-[#004030] mb-4">
+            <h2 class="lg:text-5xl md:text-[40px]  lg:w-[320px] w-full text-4xl font-semibold text-[#004030] mb-4 font-granado">
               Procurando um presente especial? 
             </h2>
             <p class="lg:text-[22px] md:text-xl lg:w-[320px] w-full text-base font-medium text-[#333]">Descubra as opções exclusivas da Granado para presentear!</p>

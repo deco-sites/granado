@@ -12,6 +12,7 @@ export default {
       sans: ["'Mr_Eaves'", "Mr_Eaves", "sans-serif"],
       serif: ["inherit", "serif"],
       arial: ["Arial", "sans-serif"],
+      granado: ["Granado", "sans-serif"]
     },
   },
 };

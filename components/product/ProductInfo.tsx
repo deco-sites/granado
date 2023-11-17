@@ -39,7 +39,6 @@ function ProductInfo({ page, layout }: Props) {
   }
 
   const {
-    breadcrumbList,
     product,
   } = page;
   const {
@@ -50,7 +49,7 @@ function ProductInfo({ page, layout }: Props) {
     isVariantOf,
     additionalProperty = [],
   } = product;
-  const description = product.description || isVariantOf?.description;
+  
   const {
     price = 0,
     listPrice,
@@ -59,22 +58,14 @@ function ProductInfo({ page, layout }: Props) {
     availability,
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
-  const breadcrumb = {
-    ...breadcrumbList,
-    itemListElement: breadcrumbList?.itemListElement.slice(0, -1),
-    numberOfItems: breadcrumbList.numberOfItems - 1,
-  };
-
   const eventItem = mapProductToAnalyticsItem({
     product,
-    breadcrumbList: breadcrumb,
     price,
     listPrice,
   });
 
   return (
-    <div class="flex flex-col px-20 py-[60px]" id={id}>
-      {/* <Breadcrumb itemListElement={breadcrumb.itemListElement} /> */}
+    <div class="flex flex-col px-20 py-[60px] lg:mt-[133px]" id={id}>
       {/* Code and name */}
       <div class="mt-4 sm:mt-8">
         <div>
@@ -85,7 +76,7 @@ function ProductInfo({ page, layout }: Props) {
           )}
         </div>
         <h1>
-          <span class="font-semibold lg:text-[40px] md:text-[36px] sm:text-[32px] text-[#025a44] uppercase mb-[15px]">
+          <span class="font-semibold lg:text-[40px] md:text-[36px] sm:text-[32px] text-[#025a44] uppercase mb-[15px] font-granado">
             {layout?.name === "concat"
               ? `${isVariantOf?.name} ${name}`
               : layout?.name === "productGroup"
@@ -106,7 +97,7 @@ function ProductInfo({ page, layout }: Props) {
               {formatPrice(listPrice, offers?.priceCurrency)}
             </span>
           )}
-          <span class="font-medium text-[32px] text-[#025a44]">
+          <span class="font-medium text-[32px] text-[#025a44] font-granado">
             {formatPrice(price, offers?.priceCurrency)}
           </span>
         </div>
@@ -165,9 +156,7 @@ function ProductInfo({ page, layout }: Props) {
                   <div class="border border-gray-2 rounded-[2px] flex mr-4">
                     <button
                      type="button"
-                    variant="ghost"
-              
-                   class="w-[45px] h-[45px] flex items-center justify-center font-bold text-[16px] transition-all duration-1500 active:bg-green active:text-white"
+                     class="w-[45px] h-[45px] flex items-center justify-center font-bold text-[16px] transition-all duration-1500 active:bg-green active:text-white"
             >
               -
             </button>
@@ -176,8 +165,6 @@ function ProductInfo({ page, layout }: Props) {
             </div>
             <button
               type="button"
-              variant="ghost"
-              
               class="w-[45px] h-[45px] items-center!text-center flex items-center justify-center font-bold text-[16px] transition-all duration-1500 active:bg-green active:text-white"
             >
               +
@@ -242,20 +229,7 @@ function ProductInfo({ page, layout }: Props) {
            
         </div>
       </div>
-      {/* Description card */}
-      {/* <div class="mt-4 sm:mt-6">
-        <span class="text-sm">
-          {description && (
-            <details>
-              <summary class="cursor-pointer">Descrição</summary>
-              <div
-                class="ml-2 mt-2"
-                dangerouslySetInnerHTML={{ __html: description }}
-              />
-            </details>
-          )}
-        </span>
-      </div> */}
+      
       {/* Analytics Event */}
       <SendEventOnView
         id={id}

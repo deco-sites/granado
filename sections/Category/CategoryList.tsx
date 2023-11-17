@@ -46,7 +46,7 @@ function CardText(
       }`}
     >
       {tag && <div class="text-sm text-white">{tag}</div>}
-      {label && <h3 class=" text-white text-[32px] absolute font-semibold bottom-16 left-[30px] group-hover:bottom-[148px] transition-all  duration-300 ease-in-out">{label}</h3>}
+      {label && <h3 class="font-granado text-white text-[32px] absolute font-semibold bottom-16 left-[30px] group-hover:bottom-[148px] transition-all  duration-300 ease-in-out">{label}</h3>}
       {description && 
       <div class="absolute bottom-10 left-[32px] w-full max-w-[227px]">
         <div class="text-sm max-w-[227px] w-full text-white absolute font-medium transition-all bottom-11 duration-300 ease-in-out group-hover:opacity-100 opacity-0">

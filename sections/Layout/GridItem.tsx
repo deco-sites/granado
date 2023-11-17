@@ -26,7 +26,7 @@ interface Props {
 
 function GridItem({ children, layout }: Props) {
   return (
-    <div
+  <div
       class={clx(
         layout?.rowStart?.mobile &&
           grid.rowStart.mobile[layout.rowStart.mobile],

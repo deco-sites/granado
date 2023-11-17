@@ -81,8 +81,7 @@ function Grid({ layout, children }: Props) {
         grid.rows.desktop[layout?.rows?.desktop ?? "none"],
         grid.flow.mobile[layout?.flow?.mobile ?? "col"],
         grid.flow.desktop[layout?.flow?.desktop ?? "row"],
-        grid.placeItems.mobile[layout?.placeItems?.mobile ?? "center"],
-        grid.placeItems.desktop[layout?.placeItems?.desktop ?? "center"],
+        
       )}
     >
       {items}
