@@ -73,13 +73,19 @@ function Filters({ filters }: Props) {
       {filters
         .filter(isToggle)
         .map((filter) => (
-          <li class="flex flex-col gap-4">
-             <details>
-             <span class="flex flex-row items-center justify-between border-b pb-3"><span>{filter.label}</span>  <Icon id="ChevronLeft" size={24} strokeWidth={2} /></span>
-             <sumary>Teste</sumary>
-             <div  class="ml-2 mt-2"
-                dangerouslySetInnerHTML={{ __html: <FilterValues {...filter} /> }} />
-            </details>
+          <li class="flex flex-col gap-4 group is-active ">
+             <div class="relative w-full overflow-hidden">
+              <input type="checkbox" class="absolute top-0 inset-x-0 w-full h-9 opacity-0 z-10 cursor-pointer peer" />
+              <div class="w-full h-9 itemx-center flex flex-row border-b peer-checked:border-b-0">
+                <span class="w-full font-normal text-base pb-1 items-center top-2">{filter.label}</span>
+                <span class="absolute top-1 right-3 rotate-0  peer-checked:rotate-180 transition-transform duration-300">
+                  <Icon id="ChevronDown" size={18} strokeWidth={2} />
+                </span>
+              </div>
+              <div class="overflow-hidden max-h-0 transition-all duration-200 peer-checked:max-h-40">
+               <FilterValues {...filter} />
+             </div>
+             </div>
           </li>
         ))}
     </ul>

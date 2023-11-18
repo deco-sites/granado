@@ -108,7 +108,7 @@ function ProductCard(
           strokeWidth={2}
           class="text-[#025a44] group-hover/button:text-white"
         />
-        <span class="text-[#025a44] group-hover/button:text-white text-lg font-normal">
+        <span class="text-[#025a44] group-hover/button:text-white text-sm lg:text-lg font-normal">
           {l?.basics?.ctaText || "Adicionar"}
         </span>
     </a>

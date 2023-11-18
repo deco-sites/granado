@@ -258,7 +258,7 @@ function Result({
 
   return (
     <>
-      <div class="container px-4 sm:py-10 mt-20">
+      <div class="container px-4 lg:px-8 sm:py-10 mt-20">
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
@@ -266,13 +266,22 @@ function Result({
           displayFilter={layout?.variant === "drawer"}
         />
 
-        <div class="flex flex-row">
+        <div class="flex md:flex-row flex-col">
           {layout?.variant === "aside" && filters1.length > 0 && (
-            <aside class="hidden sm:block w-1/4 min-w-[250px]">
+            <aside class="hidden sm:block w-full md:w-[20%] min-w-[250px]">
+              <h1 class="font-granado text-[#025a44] text-[40px] lg:text-[56px] pb-14">Produtos com até 70%OFF</h1>
               <Filters filters={filters1} />
             </aside>
           )}
-          <div class="flex-grow w-3/4 pl-10" id={id}>
+          <div class="flex-grow w-full md:w-[80%] pl-10" id={id}>
+            <div class="w-full flex justify-end mb-8 h-10">
+              <select class="border rounded">
+                <option>Posição</option>
+                <option>Nome do produto</option>
+                <option>Preço</option>
+                <option>Mais Vendidos</option>
+              </select>
+            </div>
             <ProductGallery
               products={products}
               offset={offset}

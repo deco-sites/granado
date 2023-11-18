@@ -56,12 +56,7 @@ export default function GallerySlider(props: Props) {
        <Breadcrumb itemListElement={breadcrumb.itemListElement} />
     <div
       class=" grid grid-cols-2 overflow-auto snap-x snap-mandatory scroll-smooth scrollbar-none sm:gap-2 mt-6"
-      onScroll={(e) => {
-        const totalScroll = (e.srcElement as HTMLElement)?.scrollWidth;
-        const space = totalScroll / images1?.length;
-        const currentScroll = (e.srcElement as HTMLElement)?.scrollLeft;
-        inFocus.value = Math.round(currentScroll / space);
-      }}
+    
     >
       {items?.map((img, index) => (
         <Image

@@ -48,11 +48,11 @@ function Newsletter(
     <div
       class={`flex ${
         tiled
-          ? "flex-col gap-4 w-full max-w-[450px] pl-10"
+          ? "flex-col gap-4 w-full max-w-[450px] lg:pl-10"
           : "flex-col gap-4"
       }`}
     >
-      <div class="flex flex-col gap-4 w-full max-w-[350px]">
+      <div class="flex flex-col gap-4 w-full text-center lg:text-left max-w-[350px]">
         {content?.title && (
           <h3 class={tiled ? "text-2xl lg:text-3xl font-medium" : "text-lg"}>
             {content?.title}

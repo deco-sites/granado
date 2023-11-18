@@ -24,10 +24,9 @@ const MOBILE_COLUMNS = {
 };
 
 const DESKTOP_COLUMNS = {
-  2: "sm:grid-cols-2",
-  3: "sm:grid-cols-3",
-  4: "sm:grid-cols-4",
-  5: "sm:grid-cols-5",
+  2: "md:grid-cols-2",
+  3: "lg:grid-cols-3",
+  4: "xl:grid-cols-4",
 };
 
 function ProductGallery({ products, layout, offset }: Props) {
@@ -36,7 +35,7 @@ function ProductGallery({ products, layout, offset }: Props) {
   const desktop = DESKTOP_COLUMNS[layout?.columns?.desktop ?? 4];
 
   return (
-    <div class={`grid ${mobile} gap-2 items-center ${desktop} sm:gap-10`}>
+    <div class={`grid ${mobile} gap-2 items-center ${desktop}`}>
       {products?.map((product, index) => (
         <ProductCard
           product={product}
