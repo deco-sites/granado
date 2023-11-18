@@ -49,7 +49,7 @@ export default function AddToCartButton(props: Props) {
          strokeWidth={2}
          class="text-white group-hover/button:text-[#025a44]"
        />
-       <span class="text-white group-hover/button:text-[#025a44] text-lg font-normal">Adicionar</span>
+       <span class="text-white group-hover/button:text-[#025a44] text-sm md:text-lg font-normal">Adicionar</span>
     </Button>
   );
 }
