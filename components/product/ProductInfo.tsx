@@ -44,7 +44,6 @@ function ProductInfo({ page, layout }: Props) {
   const {
     productID,
     offers,
-    name = "",
     gtin,
     isVariantOf,
     additionalProperty = [],
@@ -64,6 +63,8 @@ function ProductInfo({ page, layout }: Props) {
     listPrice,
   });
 
+  const name = product?.isVariantOf?.name
+
   return (
     <div class="flex flex-col px-20 py-[60px] lg:mt-[133px]" id={id}>
       {/* Code and name */}
@@ -76,7 +77,7 @@ function ProductInfo({ page, layout }: Props) {
           )}
         </div>
         <h1>
-          <span class="font-semibold lg:text-[40px] md:text-[36px] sm:text-[32px] text-[#025a44] uppercase mb-[15px] font-granado">
+          <span class="font-normal lg:text-[40px] text-[46px] text-center md:text-left  text-[#025a44] uppercase mb-[15px] font-granado">
             {layout?.name === "concat"
               ? `${isVariantOf?.name} ${name}`
               : layout?.name === "productGroup"
@@ -165,7 +166,7 @@ function ProductInfo({ page, layout }: Props) {
             </div>
             <button
               type="button"
-              class="w-[45px] h-[45px] items-center!text-center flex items-center justify-center font-bold text-[16px] transition-all duration-1500 active:bg-green active:text-white"
+              class="w-[45px] h-[45px] items-center!text-center flex items-center justify-center font-medium text-[16px] transition-all duration-1500  active:text-white"
             >
               +
             </button>

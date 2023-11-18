@@ -46,17 +46,32 @@ export default function GallerySlider(props: Props) {
     itemListElement: breadcrumbList?.itemListElement.slice(0, -1),
     numberOfItems: breadcrumbList.numberOfItems - 1,
   };
-
-  const items = props.page.product.isVariantOf.image
-  breadcrumb.itemListElement.push({ name: props.page.product.name, item: "/" })
   
-  const inFocus = useSignal(0);
+  const items = props.page?.product?.isVariantOf?.image
+  breadcrumb.itemListElement.push({ name: props.page.product?.isVariantOf?.name, item: "/" })
+  
   return (
     <div id={id} class="w-full mt-[123px] lg:ml-8">
-       <Breadcrumb itemListElement={breadcrumb.itemListElement} />
+       <div class="md:block hidden">
+         <Breadcrumb itemListElement={breadcrumb.itemListElement} />
+       </div>
+         <div  class="md:hidden w-full grid grid-flow-row sm:grid-flow-col">
+              <Image
+                class="w-full"
+                sizes="(max-width: 640px) 100vw, 40vw"
+                style={{ aspectRatio }}
+                src={items[0].url!}
+                alt={items[0].alternateName}
+                width={580}
+                height={750}
+                // Preload LCP image for better web vitals
+                preload={false}
+                
+              />
+        </div>
+
     <div
-      class=" grid grid-cols-2 overflow-auto snap-x snap-mandatory scroll-smooth scrollbar-none sm:gap-2 mt-6"
-    
+      class="hidden md:grid grid-cols-2 overflow-auto snap-x snap-mandatory scroll-smooth scrollbar-none sm:gap-2 mt-6"
     >
       {items?.map((img, index) => (
         <Image

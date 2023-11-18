@@ -67,7 +67,6 @@ function ProductCard(
   const {
     url,
     productID,
-    name,
     image: images,
     offers,
     isVariantOf,
@@ -80,6 +79,7 @@ function ProductCard(
   const { listPrice, price, installments } = useOffer(offers);
   const possibilities = useVariantPossibilities(hasVariant, product);
   const variants = Object.entries(Object.values(possibilities)[0] ?? {});
+  const name = product?.isVariantOf?.name
 
   const l = layout;
   const align =
@@ -233,7 +233,7 @@ function ProductCard(
         </figcaption>
       </figure>
       {/* Prices & Name */}
-      <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4 px-8 pt-4 pb-6">
+      <div class="flex-auto flex flex-col p-2 gap-2 lg:gap-3 px-8 pt-4 pb-6">
         {/* SKU Selector */}
         {(!l?.elementsPositions?.skuSelector ||
           l?.elementsPositions?.skuSelector === "Top") && (
@@ -255,8 +255,8 @@ function ProductCard(
           : (
             <div class="flex flex-col gap-0">
               {l?.hide?.productName ? "" : (
-                <h2
-                  class="truncate text-base lg:text-lg text-[#333]"
+                <a
+                  class="text-base lg:text-[17px] leading-none font-medium text-[#333]"
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
@@ -278,13 +278,13 @@ function ProductCard(
               } ${align === "center" ? "justify-center" : "justify-start"}`}
             >
               <div
-                class={`line-through text-[#333] text-xs ${
+                class={`line-through text-black text-xs ${
                   l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
                 }`}
               >
                 {formatPrice(listPrice, offers?.priceCurrency)}
               </div>
-              <div class="text-[#333] text-base lg:text-xl">
+              <div class="text-black font-medium text-base lg:text-xl">
                 {formatPrice(price, offers?.priceCurrency)}
               </div>
             </div>

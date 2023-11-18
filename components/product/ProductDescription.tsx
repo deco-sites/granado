@@ -14,23 +14,9 @@ const ProductDescription = () => {
             {Buttons.map((btn) => <button onClick={() => btn.selected == true} class={`px-[26px] py-4 text-base ${btn.selected ? "bg-[#f6f3f8] text-black" : "bg-white text-[#333] hover:text-black"}`}>{btn.text}</button>)}
         </div>
         <div  class="bg-[#f6f3f8] p-8 text-sm rounded-sm">
-        A coleção de perfumes Vintage apresenta fragrâncias sofisticadas e atemporais, que carregam o DNA da Granado. Cada fragrância desperta memórias e nos leva a uma jornada pela centenária história da marca através da perfumaria, descobrindo um novo capítulo a cada nota olfativa.
-
-Infusão Botânica tem um frescor inusitado e intrigante. Suas notas especiadas e aromáticas dão muita personalidade à criação e o transformam numa fragrância revigorante, que conecta com a natureza pelos seus ingredientes naturais. O fundo confortável fica por conta das notas amadeiradas de cashmeran e vetiver. É o equilíbrio perfeito entre frescor e conforto!
-
-A arte da embalagem traz ingredientes da perfumaria em uma luxuosa trama em estilo art nouveau aplicada em hot stamping dourado, que ilumina a ilustração e o destaca de todos os outros produtos da linha Vintage. Dentro da caixa, um texto conceitual conta a história e inspiração do perfume.
-
-Produzida com um álcool extra neutro, que é mais puro e não interfere na fragrância, a eau de parfum também passa pelo processo de maceração de perfume, prática feita por um seleto grupo de perfumarias no mundo, que garante maior harmonização e amadurecimento das notas olfativas da fragrância. Produto vegano. Não testado em animais. Conteúdo: 75ml.
-
-Família e Pirâmide Olfativa: Amadeirado Especiado Aromático
-
-Notas de topo: semente de coentro*, pimenta preta e limão*
-
-Notas de corpo: notas verdes*, cardamomo e peônia
-
-Notas de fundo: cashmeran, musk e vetiver*
-
-*óleos naturais
+        Gengibre tem uma fragrância cítrica, especiada e intensa. A raiz é reconhecida na medicina chinesa como “remédio universal” devido suas diversas propriedades terapêuticas. Ideal também como vela aromática para deixar sua casa ainda mais cheirosa.<br></br><br></br>
+        A Vela Perfumada Granado é feita artesanalmente com cera vegetal de carnaúba e alta concentração de perfume. Além de ter longa duração, perfumando por mais tempo, não libera fumaça escura e é um ótimo complemento na decoração.<br></br><br></br>
+        A identidade visual da embalagem segue o padrão minimalista e delicado da linha Terrapeutics. O frasco de vidro fosco, com ilustração de flores, decora e cria uma atmosfera acolhedora no ambiente. Não contém ingredientes de origem animal. Conteúdo: 180g.  
         </div>
     </div>
     )
