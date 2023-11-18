@@ -6,7 +6,6 @@ import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Icon from "$store/components/ui/Icon.tsx";
 
-
 export interface Category {
   tag?: string;
   label: string;
@@ -46,10 +45,10 @@ function CardText(
       }`}
     >
       {tag && <div class="text-sm text-white">{tag}</div>}
-      {label && <h3 class="font-granado text-white text-[32px] absolute font-semibold bottom-16 left-[30px] group-hover:bottom-[148px] transition-all  duration-300 ease-in-out">{label}</h3>}
+      {label && <h3 class="font-granado text-white text-[32px] absolute font-semibold bottom-16 left-4 lg:left-[30px] lg:group-hover:bottom-[148px] transition-all  duration-300 ease-in-out">{label}</h3>}
       {description && 
       <div class="absolute bottom-10 left-[32px] w-full max-w-[227px]">
-        <div class="text-sm max-w-[227px] w-full text-white absolute font-medium transition-all bottom-11 duration-300 ease-in-out group-hover:opacity-100 opacity-0">
+        <div class="text-sm max-w-[227px] w-full text-white absolute font-medium transition-all bottom-11 duration-300 ease-in-out lg:block hidden group-hover:opacity-100 opacity-0">
           {description}
         </div>
         <span class="flex flex-row items-center text-white font-medium text-lg  bottom-14 group-hover:opacity-100 opacity-0">
@@ -93,7 +92,7 @@ function CategoryList(props: Props) {
   return (
     <div
       id={id}
-      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10 sm:pl-20 sm:px-0 px-2"
+      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10 lg:pl-20 sm:px-0 px-2"
     >
       <Header
         title={header.title}

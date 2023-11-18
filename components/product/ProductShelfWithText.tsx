@@ -23,6 +23,36 @@ export interface Props {
   cardLayout?: cardLayout;
 }
 
+interface DotsProps {
+  images?: Product[];
+  interval?: number;
+}
+
+function Dots({ images, interval = 0 }: DotsProps) {
+  return (
+    <>
+      <ul
+        class={`carousel justify-center row-start-6 col-span-full gap-2 z-10`}
+      >
+        {images?.map((_, index) => (
+          <Slider.Dot index={index}>
+            <div
+              class={`py-5 ${
+                ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden"
+              }`}
+            >
+              <div
+                class="w-[54px] h-[5px] rounded group-disabled:opacity-100 opacity-20 bg-[#929292]"
+                style={{ animationDuration: `${interval}s` }}
+              />
+            </div>
+          </Slider.Dot>
+        ))}
+      </ul>
+    </>
+  );
+}
+
 function ProductShelfWithText({
   products,
   title,
@@ -85,6 +115,7 @@ function ProductShelfWithText({
             </Slider.NextButton>
           </div>
         </>
+        <Dots images={products} />
         <SliderJS rootId={id} />
         <SendEventOnView
           id={id}

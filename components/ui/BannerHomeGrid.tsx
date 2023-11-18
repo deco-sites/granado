@@ -59,9 +59,9 @@ export default function BannnerHomeGrid(props: Props) {
             <div class="bg-[#e5e5ea] h-[1px] w-full ml-4"></div>
           </div>
         )}
-          <div class="flex flex-row h-full max-h-[620px]">
+          <div class="flex md:flex-row flex-col h-full max-h-[620px]">
             {/* BIG ONE */}
-            <a href={banners[0].href} class="w-[60%] mr-[15px] h-full max-h-[620px]">
+            <a href={banners[0].href} class="md:w-[60%] md:mb-0 mb-[15px] w-full mr-[15px] h-[153px] md:h-full max-h-[620px]">
               <Image
                 sizes="(max-width: 767px) 100%, 50%"
                 src={banners[0].picture}
@@ -70,14 +70,14 @@ export default function BannnerHomeGrid(props: Props) {
                 width={863}
                 height={607}
                 loading="lazy"
-                class="object-cover h-[620px] w-full rounded-md"
+                class="object-cover h-full w-full rounded-md"
               />
             </a>
 
             {/* OTHERS */}
-            <div class="w-[40%] flex flex-col gap-[15px]"> 
+            <div class="md:w-[40%] w-full flex flex-col gap-y-[15px]"> 
             {banners.slice(1, 3).map((item, index) => (
-              <a href={item.href} class={`w-[100%] h-full`}>
+              <a href={item.href} class={`w-[100%] h-[153px] md:h-full`}>
                 <Image
                   sizes="(max-width: 767px) 100%, 50%"
                   src={item.picture}

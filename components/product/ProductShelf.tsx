@@ -23,6 +23,37 @@ export interface Props {
   cardLayout?: cardLayout;
 }
 
+interface DotsProps {
+  images?: Product[];
+  interval?: number;
+}
+
+function Dots({ images, interval = 0 }: DotsProps) {
+  return (
+    <>
+      <ul
+        class={`carousel justify-center row-start-6 col-span-full gap-2 z-10`}
+      >
+        {images?.map((_, index) => (
+          <Slider.Dot index={index}>
+            <div
+              class={`py-5 ${
+                ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden"
+              }`}
+            >
+              <div
+                class="w-[54px] h-[5px] rounded group-disabled:opacity-100 opacity-20 bg-[#929292]"
+                style={{ animationDuration: `${interval}s` }}
+              />
+            </div>
+          </Slider.Dot>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+
 function ProductShelf({
   products,
   title,
@@ -38,7 +69,7 @@ function ProductShelf({
   }
 
   return (
-    <div class="w-full container  py-8 flex flex-col gap-12 lg:gap-16 lg:py-10">
+    <div class="w-full container lg:px-16 px-2  py-8 flex flex-col gap-6 lg:py-10">
       <Header
         title={title || ""}
         description={description || ""}
@@ -69,16 +100,19 @@ function ProductShelf({
 
         <>
           <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
-            <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-base-100">
+            <Slider.PrevButton class="btn btn-square hover:bg-white hover:border hover:border-black absolute right-[-50px] bg-base-100">
               <Icon size={24} id="ChevronLeft" strokeWidth={3} />
             </Slider.PrevButton>
           </div>
           <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
-            <Slider.NextButton class="btn btn-circle btn-outline absolute left-1/2 bg-base-100">
+            <Slider.NextButton class="btn btn-square hover:bg-white hover:border hover:border-black absolute left-[-50px] mr-10 bg-base-100">
               <Icon size={24} id="ChevronRight" strokeWidth={3} />
             </Slider.NextButton>
           </div>
         </>
+        <Dots
+            images={products}
+          />
         <SliderJS rootId={id} />
         <SendEventOnView
           id={id}

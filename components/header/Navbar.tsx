@@ -26,18 +26,28 @@ function Navbar({ items, searchbar, logo }: {
       {/* Mobile Version */}
       <div
         style={{ height: navbarHeight }}
-        class="md:hidden flex flex-row justify-between items-center w-full pl-2 pr-6 gap-2"
+        class="md:hidden flex flex-row justify-between items-center w-full pl-2 pr-6 gap-2 bg-gradient-to-b from-black to-transparent"
       >
-        <MenuButton />
+         <button class="flex flex-row items-center ml-5">
+            <img
+              src="https://www.granado.com.br/static/version1699940359/frontend/Nectar/granado/pt_BR/images/flag-br.svg"
+              width={30}
+              height={20}
+              class="mr-[10px]"
+            />
+            <span class="group-hover:text-black text-white text-lg font-medium">
+              BR
+            </span>
+          </button>
 
         {logo && (
           <a
             href="/"
-            class="flex-grow inline-flex items-center"
+            class="flex-grow inline-flex justify-center items-center"
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
           >
-            <Image src={logo.src} alt={logo.alt} width={126} height={16} />
+            <Image src={logo.src} alt={logo.alt} width={137} height={60} />
           </a>
         )}
 
