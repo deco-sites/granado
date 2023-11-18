@@ -52,6 +52,210 @@ function Result({
   const zeroIndexedOffsetPage = pageInfo.currentPage - startingPage;
   const offset = zeroIndexedOffsetPage * perPage;
 
+  const filters1 = [
+    {
+      "@type": "FilterToggle",
+      key: "price",
+      label: "Preço",
+      quantity: 3,
+      values: [
+        {
+          value: "159:180",
+          quantity: 24,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.price=159%3A",
+          label: "159:180"
+        },
+        {
+          value: "200:259",
+          quantity: 9,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.price=200%3A",
+          label: "200:259"
+        },
+        {
+          value: "180:200",
+          quantity: 9,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.price=180%3A",
+          label: "180:200"
+        }
+      ]
+    },
+    {
+      "@type": "FilterToggle",
+      key: "cor-basica",
+      label: "Cor Básica",
+      quantity: 9,
+      values: [
+        {
+          value: "amarelo--ffe746",
+          quantity: 1,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=a",
+          label: "AMARELO #ffe746"
+        },
+        {
+          value: "azul--2f7ab3",
+          quantity: 12,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=a",
+          label: "AZUL #2f7ab3"
+        },
+        {
+          value: "branco--ffffff",
+          quantity: 4,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=b",
+          label: "BRANCO #ffffff"
+        },
+        {
+          value: "caqui--ddaf66",
+          quantity: 2,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=c",
+          label: "CAQUI #ddaf66"
+        },
+        {
+          value: "cinza--d2d2cb",
+          quantity: 3,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=c",
+          label: "CINZA #d2d2cb"
+        },
+        {
+          value: "preto--000000",
+          quantity: 5,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=p",
+          label: "PRETO #000000"
+        },
+        {
+          value: "rosa--ffcccc",
+          quantity: 2,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=r",
+          label: "ROSA #ffcccc"
+        },
+        {
+          value: "verde--9fd573",
+          quantity: 4,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=v",
+          label: "VERDE #9fd573"
+        },
+        {
+          value: "vermelho--ea3a3a",
+          quantity: 1,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.cor-basica=v",
+          label: "VERMELHO #ea3a3a"
+        }
+      ]
+    },
+    {
+      "@type": "FilterToggle",
+      key: "linha",
+      label: "Linha",
+      quantity: 3,
+      values: [
+        {
+          value: "basicas",
+          quantity: 8,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.linha=basica",
+          label: "Básicas"
+        },
+        {
+          value: "casuais",
+          quantity: 31,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.linha=casuai",
+          label: "Casuais"
+        },
+        {
+          value: "t-shirts",
+          quantity: 2,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.linha=t-shir",
+          label: "T-shirts"
+        }
+      ]
+    },
+    {
+      "@type": "FilterToggle",
+      key: "manga",
+      label: "Manga",
+      quantity: 2,
+      values: [
+        {
+          value: "manga-longa",
+          quantity: 2,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.manga=manga-",
+          label: "Manga Longa"
+        },
+        {
+          value: "manga-curta",
+          quantity: 36,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.manga=manga-",
+          label: "Manga Curta"
+        }
+      ]
+    },
+    {
+      "@type": "FilterToggle",
+      key: "tamanho",
+      label: "Tamanho",
+      quantity: 6,
+      values: [
+        {
+          value: "p",
+          quantity: 41,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.tamanho=p",
+          label: "P"
+        },
+        {
+          value: "m",
+          quantity: 41,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.tamanho=m",
+          label: "M"
+        },
+        {
+          value: "g",
+          quantity: 40,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.tamanho=g",
+          label: "G"
+        },
+        {
+          value: "gg",
+          quantity: 42,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.tamanho=gg",
+          label: "GG"
+        },
+        {
+          value: "xxg",
+          quantity: 42,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.tamanho=xxg",
+          label: "XXG"
+        },
+        {
+          value: "xxxg",
+          quantity: 42,
+          selected: false,
+          url: "?sort=name%3Aasc&filter.category-1=roupas-masculinas&filter.category-2=camisetas&filter.tamanho=xxxg",
+          label: "XXXG"
+        }
+      ]
+    }
+  ]
+
   return (
     <>
       <div class="container px-4 sm:py-10 mt-20">
@@ -63,12 +267,12 @@ function Result({
         />
 
         <div class="flex flex-row">
-          {layout?.variant === "aside" && filters.length > 0 && (
-            <aside class="hidden sm:block w-min min-w-[250px]">
-              <Filters filters={filters} />
+          {layout?.variant === "aside" && filters1.length > 0 && (
+            <aside class="hidden sm:block w-1/4 min-w-[250px]">
+              <Filters filters={filters1} />
             </aside>
           )}
-          <div class="flex-grow" id={id}>
+          <div class="flex-grow w-3/4 pl-10" id={id}>
             <ProductGallery
               products={products}
               offset={offset}
