@@ -5,6 +5,7 @@ import { useId } from "$store/sdk/useId.ts";
 import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Icon from "$store/components/ui/Icon.tsx";
+import AnimationJS from "$store/islands/AnimationJS.tsx";
 
 export interface Category {
   tag?: string;
@@ -92,7 +93,8 @@ function CategoryList(props: Props) {
   return (
     <div
       id={id}
-      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10 lg:pl-20 sm:px-0 px-2"
+      data-animation
+      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10 lg:pl-20 sm:px-0 px-2 opacity-0 transition-all duration-300"
     >
       <Header
         title={header.title}
@@ -152,6 +154,7 @@ function CategoryList(props: Props) {
         ))}
       </Slider>
       <SliderJS rootId={id} />
+      <AnimationJS rootId={id} /> 
     </div>
   );
 }
