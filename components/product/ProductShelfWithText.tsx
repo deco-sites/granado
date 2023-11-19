@@ -11,6 +11,7 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
+import AnimationJS from "$store/islands/AnimationJS.tsx";
 
 export interface Props {
   products: Product[] | null;
@@ -68,7 +69,7 @@ function ProductShelfWithText({
   }
 
   return (
-    <div class="w-full container sm:pl-16 sm:px-0 px-2 py-8 flex flex-col gap-12 lg:gap-16 lg:py-10">
+    <div id={id} data-animation class="w-full container sm:pl-16 sm:px-0 px-2 py-8 flex flex-col gap-12 lg:gap-16 lg:py-10 mt-[50px] opacity-0 transition-all duration-300">
       <Header
         title={title || ""}
         description={description || ""}
@@ -135,7 +136,7 @@ function ProductShelfWithText({
         />
       </div>
       </div>
-      
+      <AnimationJS rootId={id} />
     </div>
   );
 }

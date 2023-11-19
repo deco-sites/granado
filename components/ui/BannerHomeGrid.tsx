@@ -1,5 +1,6 @@
 import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
+import AnimationJS from "$store/islands/AnimationJS.tsx";
 
 /**
  * @titleBy alt
@@ -47,8 +48,10 @@ export default function BannnerHomeGrid(props: Props) {
     banners = [],
   } = { ...DEFAULT_PROPS, ...props };
 
+  const id = `Banner-Animation`
+
   return (
-    <section class="container w-full px-4 md:px-0 mx-auto h-full py-10">
+    <section data-animation id={id} class="container w-full px-4 md:px-0 mx-auto h-full py-10 opacity-0 transition-all duration-300">
       {title &&
         (
           <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
@@ -90,6 +93,7 @@ export default function BannnerHomeGrid(props: Props) {
             ))}
             </div>
           </div>
+          <AnimationJS rootId={id}/>
     </section>
   );
 }
